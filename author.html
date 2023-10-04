@@ -1,42 +1,86 @@
-<!DOCTYPE html><!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html>
+  <body>
   <title>Author</title>
-<body>
-<h2>Author entry Tejaswini Bobba</h2>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <h1>Author entry Tejaswini Bobba</h1>
+  <h2>Getting input </h2>
 <form>
-    <label for="author_name">The hidden author name</label>
-    <input type ="password" id="form1_Pass" name=""form1_Pass value="Dickens"><br>
-    <label for="form1_check">Guess the author</label>
-    <input type="text" id="form1_check" name="form1_check"><br>
-    <input type="button"  onclick="checkAuthor()" value= "Check the guess">
+    <label for="hidden-author">The hidden author name:</label>
+    <input type ="password" id="hidden-author" value="Dickens">
+    <br>
+    <label for="guess-author">Guess the author:</label>
+    <input type="text" id="guess-author">
+    <br>
+    <input type="button" id="btn" value= "Check the guess" onclick="checkAuthor()" >
 
 </form>
-<p id="results">Good:<span id="good">0</span> Oops:<span id="oops">0</span></p>
+<div id="results">
+  Good:<span id="good-count">0</span> Oops:<span id="oops-count">0</span>
+  </div>
+  <div id="imageContainer">
+    <img id="cityImage" src="Bangalore.jpg" alt="City 1" width="100" height="100" onclick="selectImage()">
+    </div>
 <script> 
 var good = 0;
 var oops = 0;
  function checkAuthor() {
-     password=document.getElementsById("form1_Pass").value
-     text=document.getElementById("form1_check").value
-     goodCount=document.getElementById("good")
-     oopsCount=document.getElementById("oops")
-    out=document.getElementById("result")
-    if (password==text) {
-    good++;
-    alert("You got it right!");
-    goodCount.innerHTML = good
-    } else {
-             oops++;
-            alert(" oops sorry");
-            oopsCount.innerHTML = oops
-            }
-            
+     password=document.getElementById("hidden-author").value
+     guess=document.getElementById("guess-author").value
+     results=document.getElementById("results");
+     goodCount=document.getElementById("good-count");
+     oopsCount=document.getElementById("oops-count");
+    if (oops>=7) {
+         wrongMethod()
+    
+    } else if(password === guess) {
+             good++;
+            alert("you got it right!");
+    }else{
+      oops++;
+      alert("sorry!");
+    }
+    goodCount.innerHTML = good;
+    oopsCount.innerHTML = oops;
+  }
+           
+  function wrongMethod()
+        {
+          alert("sorry,ran out of guesses."); 
+          document.getElementById("btn").disabled=true
         }
-
+        var useImage = 1;
+  function selectImage() {
+      var image=document.getElementById("cityImage")
+      switch (useImage) {
+          case 1:
+              image.src = "Ooty.jpg";
+              useImage = 2;
+              break;
+          case 2:
+              image.src = "Bhuvaneswar.jpg";
+              useImage = 3;
+              break;
+          case 3:
+              image.src = "Bangalore.jpg";
+              useImage = 1;
+              break;
+          default:
+              break;
+      }
+    }
+        
+            
+        
 
 
 </script>
-
 </body>
 </html> 
+
+
+
+
+
+
