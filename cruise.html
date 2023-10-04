@@ -37,11 +37,11 @@
 <form>
     <div class="form-group">
         <label for="days">Enter number of days</label>
-        <input type="text" id="days" value="7">
+        <input type="text" id="days" value="day">
     </div>
     <div class="form-group">
         <label for="price">Enter price</label>
-        <input type="text" id="price" value="1000">
+        <input type="text" id="price" value="price">
     </div>
         <input type="button" value="update the cruise" onclick="updatecruise()">
     
@@ -49,10 +49,11 @@
 </form>
 <script>
       function updatecruise(){
+        my_cruise={};
         var days=document.getElementById("days").value;
         var price=document.getElementById("price").value;
-        my_cruise["days"]="days";
-        my_cruise["days"]="price";
+        my_cruise["days"]=days;
+        my_cruise["price"]=price;
         document.getElementById("result").innerHTML=JSON.stringify(my_cruise);
       }
 </script>
