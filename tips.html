@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tips amounts</title>
+</head>
+<body>
+    <h2>Tejaswini Bobba shows tip amounts</h2>
+    <form>
+        
+    
+    <label for="baseAmount">Enter base amount:</label>
+    <input type="number" id="baseAmount" name = "baseAmount" value=50 /><br>
+
+    <label for="tipPercent">Enter the tip percent:</label>
+    <input type="number" id="tipPercent" name= "tipPercent" value=15 /><br>
+
+    <input type="radio" id="sum" name="Arithmetic" value="sum" onclick="chooseOp()" />
+    <label for="sum">sum</label></br>
+    <input type="radio" id="diff" name="Arithmetic" value="diff"  onclick="chooseOp()">
+    <label for="diff">diff</label></br>
+    <input type="radio" id="product"  name="Arithmetic" value="product"  onclick="chooseOp()">
+    <label for="product">product</label></br>
+    
+     <button type="button" onclick="tip()">showTips</button>
+</form>
+    <p id="result">Tips are:</p>
+    <p id="results"></p>
+
+    <script>
+        function sumt(){
+            console.log("hi")
+        }
+        function tip() {
+            console.log("hi")
+              var baseAmount = parseFloat(document.getElementById("baseAmount").value);
+             var tipPercent = parseFloat(document.getElementById("tipPercent").value);
+            
+              let toShow=""
+              for (var i = 0; i < 5; i++) {
+                 var calculatedTip = (baseAmount * (tipPercent + i * 4)) / 100;
+                 toShow += (tipPercent + i * 4) + "% is " + calculatedTip.toFixed(2) + "; ";
+             console.log(toShow)
+             }
+             console.log('toShow',toShow);
+            document.getElementById("result").innerHTML = "Tips are: " + toShow;
+        }
+        function chooseOp(){
+            var baseAmount=parseInt(document.getElementById("baseAmount").value);
+            var tipPercent=parseInt(document.getElementById("tipPercent").value);
+            var cal=0;
+            var op="";
+            sum=document.getElementById("sum").checked
+            diff=document.getElementById("diff").checked
+            mult=document.getElementById("product").checked
+            if(sum){
+                cal=baseAmount+tipPercent
+                op="sum of "+baseAmount+" and "+tipPercent+" is" +cal;
+
+            }
+            else if(diff){
+                cal=baseAmount-tipPercent
+                op="diff of "+baseAmount+" and "+tipPercent+" is" +cal;
+            }
+            else{
+                cal=baseAmount*tipPercent
+                op="product of "+baseAmount+" and "+tipPercent+" is" +cal;
+
+            }
+            document.getElementById("results").innerHTML = op;
+
+        }
+
+        
+        </script>
+</body>
+</html>
+    
+   
+
+  
