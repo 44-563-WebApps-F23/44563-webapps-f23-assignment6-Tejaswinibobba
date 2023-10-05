@@ -17,8 +17,21 @@
         <label for="checkbox3">Pool Pass</label>
         <input type ="checkbox" id="checkbox3" value="False"> 
     </div>
+    <input type="button" value="select a cruise" onclick="selectcruise()"><br>
 </form>
-<input type="button" value="select a cruise" onclick="selectcruise()"><br>
+
+
+<form>
+    <div class="form-group">
+        <label for="days">Enter number of days</label>
+        <input type="text" id="days" value="days">
+    </div>
+    <div class="form-group">
+        <label for="price">Enter price</label>
+        <input type="text" id="price">
+    </div>
+        <input type="button" value="update the cruise" onclick="updatecruise()">
+</form>
 <div id="result"></div>
 <script> 
     var my_cruise={};
@@ -32,23 +45,7 @@
     my_cruise.pool=checkbox3;
     document.getElementById("result").innerHTML=JSON.stringify(my_cruise);
     }
-
-</script>
-<form>
-    <div class="form-group">
-        <label for="days">Enter number of days</label>
-        <input type="text" id="days" value="day">
-    </div>
-    <div class="form-group">
-        <label for="price">Enter price</label>
-        <input type="text" id="price" value="price">
-    </div>
-        <input type="button" value="update the cruise" onclick="updatecruise()">
-    
-
-</form>
-<script>
-      function updatecruise(){
+    function updatecruise(){
         var days=document.getElementById("days").value;
         var price=document.getElementById("price").value;
         my_cruise["days"]=days;
